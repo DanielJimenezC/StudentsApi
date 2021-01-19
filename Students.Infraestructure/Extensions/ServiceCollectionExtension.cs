@@ -15,7 +15,7 @@ namespace Students.Infraestructure.Extensions
         public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
-            options.UseMySql(configuration.GetConnectionString("defaultConnection"), new MySqlServerVersion(new Version(5, 7, 31)), mySqlOptions => mySqlOptions.CharSetBehavior(CharSetBehavior.NeverAppend))
+            options.UseMySql(configuration.GetConnectionString("defaultConnection"), new MySqlServerVersion(new Version(8, 0, 22)), mySqlOptions => mySqlOptions.CharSetBehavior(CharSetBehavior.NeverAppend))
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
             );

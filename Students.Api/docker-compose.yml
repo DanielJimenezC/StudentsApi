@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  dbstudent:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: "students"
+      MYSQL_ROOT_PASSWORD: "123"
+      MYSQL_PASSWORD: "123"
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+  restapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - dbstudent:dbstudent
+    ports:
+      - 8000:80
+    restart: always
+    
+    
